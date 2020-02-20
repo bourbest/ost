@@ -1,0 +1,67 @@
+{
+  "name": "ost",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.4.0",
+    "@testing-library/user-event": "^7.2.1",
+    "axios": "^0.19.2",
+    "bcryptjs": "^2.4.3",
+    "bootstrap": "^4.4.1",
+    "classnames": "^2.2.6",
+    "cookie-parser": "^1.4.4",
+    "corser": "^2.0.1",
+    "csrf": "^3.1.0",
+    "date-fns": "^2.9.0",
+    "idb": "^5.0.1",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.15",
+    "mongodb": "^3.5.3",
+    "node-sass": "^4.13.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-redux": "^7.1.3",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.3.1",
+    "reactstrap": "^8.4.1",
+    "redux": "^4.0.5",
+    "redux-saga": "^1.1.3",
+    "shortid": "^2.2.15"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "server-release": "webpack --config ./tasks/webpack.server.config.js --env=production",
+    "build-server": "webpack --watch --config ./tasks/webpack.server.config.js --env=development",
+    "run-server": "nodemon ./build/backend.js --watch build/backend.js",
+    "server": "npm-run-all --parallel build-server run-server",
+    "initdb": "webpack --config ./tasks/webpack.initdb.config.js"
+  },
+  "proxy": "https://localhost:443",
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^5.1.1",
+    "nodemon": "^2.0.2",
+    "npm-run-all": "^4.1.5",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-node-externals": "^1.7.2"
+  }
+}
