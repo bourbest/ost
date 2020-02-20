@@ -1,0 +1,9 @@
+{
+  "port": 443,
+  "secret": "aosd7ni934th247gcerfhncsa7nfhcoqwnt5cn2",
+  "defaultLocale": "fr",
+  "db": {
+    "server": "mongodb://localhost:27017",
+    "dbName": "ost"
+  }
+}

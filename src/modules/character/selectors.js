@@ -1,0 +1,1 @@
+export const getMyCharacter = state => state.character.characterInfo
