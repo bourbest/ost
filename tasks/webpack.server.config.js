@@ -4,7 +4,7 @@ const webpack = require('webpack')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const outputPath = path.resolve(__dirname, '../build')
-const serverSourcePath = path.resolve(__dirname, '../server')
+const serverSourcePath = path.resolve(__dirname, '../src/server')
 
 module.exports = env => {
   const isProd = env === 'production'
@@ -25,11 +25,6 @@ module.exports = env => {
     optimization: {
       nodeEnv: env,
       minimize: true
-    },
-    resolve: {
-      alias: {
-        sapin: path.resolve(__dirname, '../src/sapin/index.js')
-      }
     },
     plugins: [
       new webpack.DefinePlugin({ "process.env.NODE_ENV": JSON.stringify(env) }),

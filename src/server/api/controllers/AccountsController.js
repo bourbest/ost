@@ -1,11 +1,11 @@
 import {omit} from 'lodash'
 import {UserAccountRepository, CharacterRepository} from '../repository'
 import {entityFromBody} from '../middlewares/entityFromBody'
-import {newAccountSchema} from '../../../src/modules/accounts/account-schema'
+import {newAccountSchema} from '../../../modules/accounts/account-schema'
 import bcrypt from 'bcryptjs'
 import shortid from 'shortid'
 
-const USERNAME_MUST_BE_UNIQUE = {httpStatus: 400, message: 'Code utilisateur déjà utilisé'}
+export const USERNAME_MUST_BE_UNIQUE = {httpStatus: 400, message: 'Code utilisateur déjà utilisé'}
 
 const hashPassword = (req, res, next) => {
   const password = req.entity.password

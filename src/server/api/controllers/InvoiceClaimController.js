@@ -1,9 +1,9 @@
 import {InvoiceClaimRepository} from '../repository'
 import {entityFromBody} from '../middlewares/entityFromBody'
-import {invoiceClaimSchema} from '../../../src/modules/character/character-schema'
+import {invoiceClaimSchema} from '../../../modules/character/character-schema'
 import shortid from 'shortid'
 
-import {Schema} from '../../../src/sapin'
+import {Schema} from '../../../sapin'
 import {parseFilters} from '../middlewares/'
 import {makeFindAllHandler} from './StandardController'
 
@@ -34,7 +34,7 @@ export default {
     createClaim
   ],
   getMyClaims: [
-    parseFilters(filterSchema, true),
+    parseFilters(filterSchema, true), 
     makeFindAllHandler(InvoiceClaimRepository)
   ]  
 }

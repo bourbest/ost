@@ -31,7 +31,7 @@ function HomePage(props) {
             </div>
           </div>
           <Link to="/xp/add-invoice" className="btn btn-primary">+XP</Link>
-          <Link to="/use-scroll" className="btn btn-primary">Parchemin</Link>
+          <Link to="/xp/use-scroll" className="btn btn-primary">Parchemin</Link>
         </div>
       </div>
     </div>

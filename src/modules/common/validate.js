@@ -1,5 +1,5 @@
 import { identity } from 'lodash'
-import {isEmptyValue, PropertyDefinition, ValueTypes, isOfTypeString} from 'sapin'
+import {isEmptyValue, PropertyDefinition, ValueTypes, isOfTypeString} from '../../sapin'
 
 export const hasMinRows = (min) => {
   return ({value}) => {

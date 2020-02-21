@@ -24,12 +24,14 @@ export default function checkCsrf (options) {
     req.csrf = {generateToken}
 
     // verify the incoming token
-    if (!ignoreMethod[req.method] && !ignoredRoutes[req.path]) {
-      const secret = getSecret(req, cookieOptions)
-      const token = getTokenFromRequest(req)
-  
-      if (tokens.verify(secret, token) === false) {
-        return next({httpStatus: 403, error: 'Invalid csrf token'})
+    if (process.env.NODE_ENV !== 'test') {
+      if (!ignoreMethod[req.method] && !ignoredRoutes[req.path]) {
+        const secret = getSecret(req, cookieOptions)
+        const token = getTokenFromRequest(req)
+
+        if (tokens.verify(secret, token) === false) {
+          return next({httpStatus: 403, error: 'Invalid csrf token'})
+        }
       }
     }
     next()

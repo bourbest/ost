@@ -2,6 +2,7 @@ import AccountsController from './AccountsController'
 import AuthenticationController from './AuthenticationController'
 import InvoiceClaimController from './InvoiceClaimController'
 import CharacterController from './CharacterController'
+import ScrollController from './ScrollController'
 
 export default function registerRoutes (router) {
   router.route('/accounts')
@@ -12,9 +13,14 @@ export default function registerRoutes (router) {
     .post(AuthenticationController.login)
     .delete(AuthenticationController.logout)
 
-  router.route('/xp/invoice-claim')
+  // add Xp routes
+  router.route('/invoice-claims')
     .post(InvoiceClaimController.createClaim)
 
+  router.route('/scrolls/:id/use')
+    .post(ScrollController.useScroll)
+
+  // Character routes
   router.route('/my-character')
     .get(CharacterController.getMyCharacter)
 

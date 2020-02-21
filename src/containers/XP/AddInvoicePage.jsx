@@ -39,7 +39,6 @@ function AddInvoicePage (props) {
         setResult(result)
       })
     } else {
-      console.log(form.fieldErrors)
       setShowAllErrors(true)
     }
   }

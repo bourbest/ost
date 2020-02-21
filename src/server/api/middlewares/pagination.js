@@ -1,5 +1,5 @@
 import {omit, pick, isEmpty, keyBy, keys} from 'lodash'
-import {string, number, isInteger, oneOf, Schema, validate, transform} from 'sapin'
+import {string, number, isInteger, oneOf, Schema, validate, transform} from '../../../sapin'
 
 const basePaginationSchema = {
   page: number(isInteger),

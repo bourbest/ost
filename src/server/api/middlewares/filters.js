@@ -1,6 +1,5 @@
 import {omit} from 'lodash'
-import {validate, transform} from 'sapin'
-import {ObjectId} from 'mongodb'
+import {validate, transform} from '../../../sapin'
 
 // validate route query parameters against schema and set isArchived to false by default
 // if it is not provided
@@ -15,22 +14,17 @@ export function parseFilters (filtersSchema, useLoggedUserAsFilter = false) {
       }
 
       filters = transform(req.query, filtersSchema)
-
-      if (filters.includeArchived) {
-        filters = omit(filters, 'includeArchived')
-      } else if (filters.isArchived !== true) {
-        filters.isArchived = false
-      }
     }
 
     if (useLoggedUserAsFilter) {
       if (req.user) {
         filters.ownerId = req.user.id
       } else {
-        filters.userId = null
+        filters.ownerId = null
       }
+      
     }
-
+    
     req.filters = filters
     next()
   }

@@ -112,7 +112,7 @@ export function insert (entity) {
 
 export function insertMany (entities) {
   const data = this.prepareForDatabase(entities)
-  return this.collection.insertMany(entities)
+  return this.collection.insertMany(data)
 }
 
 export function update (entity) {

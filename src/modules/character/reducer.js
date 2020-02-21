@@ -16,6 +16,14 @@ const characterReducer = (state = initialState, action = {}) => {
       newState.invoiceClaims = action.claims
       return newState
 
+    case Actions.APPLY_SCROLL_EFFECT:
+      const updatedChar = {...newState.characterInfo}
+      updatedChar.xp += action.scroll.xp
+      updatedChar.availableGold += action.scroll.gold
+      updatedChar.lifetimeEarnedGold += action.scroll.gold
+      newState.characterInfo = updatedChar
+      return newState
+
     default:
       return state
   }

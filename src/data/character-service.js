@@ -4,6 +4,7 @@ export default class CharacterService {
     this.getMyCharacter = this.getMyCharacter.bind(this)
     this.createInvoiceClaim = this.createInvoiceClaim.bind(this)
     this.getMyClaims = this.getMyClaims.bind(this)
+    this.useScroll = this.useScroll.bind(this)
   }
 
   getMyCharacter () {
@@ -15,6 +16,11 @@ export default class CharacterService {
   }
 
   createInvoiceClaim (claim) {
-    return this.apiClient.post('xp/invoice-claim', claim)
+    return this.apiClient.post('invoice-claims', claim)
+  }
+
+  useScroll (scrollId) {
+    const id = encodeURIComponent(scrollId)
+    return this.apiClient.post(`scrolls/${id}/use`, '')
   }
 }

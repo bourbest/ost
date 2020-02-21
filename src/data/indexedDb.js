@@ -16,7 +16,6 @@ export const setupDatabase = function () {
 
   const dbPromise = openDB('ost', DB_VERSION, {
     upgrade(db, oldVersion, newVersion, transaction) {
-      console.log('in upgrade version')
       if (!db.objectStoreNames.contains(INGREDIENTS_STORE)) {
         db.createObjectStore(INGREDIENTS_STORE, {keyPath: 'id'})
       }

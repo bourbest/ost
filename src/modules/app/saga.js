@@ -1,8 +1,7 @@
-import { call, put, select, takeEvery, all } from 'redux-saga/effects'
+import { put, takeEvery, all } from 'redux-saga/effects'
 import { ActionCreators as AppActions } from '../app/actions'
 import { ActionCreators as CharacterActions } from '../character/actions'
 
-import { getService } from '../app/selectors'
 import {handleError} from '../common/commonHandlers'
 import { Actions } from './actions'
 
@@ -10,9 +9,7 @@ import { Actions } from './actions'
 // import i18next from 'i18next'
 
 function * appSaga (action) {
-  const svc = yield select(getService, 'auth')
   let errorAction = null
-
   switch (action.type) {
     case Actions.NOTIFY:
 /*      
@@ -53,6 +50,10 @@ function * appSaga (action) {
 
     default:
       throw new Error('Unsupported trigger action in app saga', action)
+  }
+
+  if (errorAction) {
+    yield put(errorAction)
   }
 }
 
