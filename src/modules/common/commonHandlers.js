@@ -1,7 +1,6 @@
 import { ActionCreators as appActions } from '../app/actions'
 
-// this function either redirects the user to the Error page or returns the appropriate action
-// to be dispatched to the store
+// this function returns the appropriate action to be dispatched to the store
 export const handleError = (entityName, error) => {
   console.log(`error with ${entityName}`, error)
   try {

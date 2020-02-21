@@ -1,13 +1,13 @@
 import {omit} from 'lodash'
 import {UserAccountRepository} from '../repository'
 import {entityFromBody} from '../middlewares/entityFromBody'
-import {loginSchema} from '../../../src/modules/authentication/authentication-schema'
+import {loginSchema} from '../../../modules/authentication/authentication-schema'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import {COOKIE_NAMES} from '../../config/const'
 
-const UNAUTH_EX = {httpStatus: 401, message: 'Code utilisateur ou mot de passe invalide'}
-const ACCOUNT_DISABLED_EX = {httpStatus: 401, message: 'Le compte a été désactivé'}
+export const UNAUTH_EX = {httpStatus: 401, message: 'Code utilisateur ou mot de passe invalide'}
+export const ACCOUNT_DISABLED_EX = {httpStatus: 401, message: 'Le compte a été désactivé'}
 
 function ensureAcccountExists (user) {
   if (!user) {
@@ -17,7 +17,7 @@ function ensureAcccountExists (user) {
 }
 
 function ensureAccountIsActive (user) {
-  if (user.isArchived) {
+  if (user.isDisabled) {
     throw ACCOUNT_DISABLED_EX
   }
   return user

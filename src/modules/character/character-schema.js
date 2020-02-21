@@ -6,3 +6,7 @@ export const invoiceClaimSchema = new Schema({
   invoiceDate: date(required),
   invoiceTime: string(required)
 })
+
+export const useScrollSchema = new Schema({
+  id: string(required)
+})

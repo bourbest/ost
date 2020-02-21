@@ -1,4 +1,4 @@
-import {validate, transform} from 'sapin'
+import {validate, transform} from '../../../sapin'
 import {endsWith, size} from 'lodash'
 
 export const entityFromBody = function (schema) {

@@ -9,6 +9,7 @@ import LoginPage from './containers/MyAccount/LoginPage'
 import HomePage from './containers/Home/HomePage'
 import CreateAccountPage from './containers/MyAccount/CreateAccountPage'
 import AddInvoicePage from './containers/XP/AddInvoicePage'
+import UseScrollPage from './containers/XP/UseScrollPage'
 
 export default function Routes() {
   return (
@@ -18,6 +19,7 @@ export default function Routes() {
         <Route exact path="/" component={HomePage} />
         <Route exact path="/create-account" component={CreateAccountPage} />
         <Route exact path="/xp/add-invoice" component={AddInvoicePage} />
+        <Route exact path="/xp/use-scroll" component={UseScrollPage} />
         <Route>
           Not found
         </Route>

@@ -38,7 +38,8 @@
     "build-server": "webpack --watch --config ./tasks/webpack.server.config.js --env=development",
     "run-server": "nodemon ./build/backend.js --watch build/backend.js",
     "server": "npm-run-all --parallel build-server run-server",
-    "initdb": "webpack --config ./tasks/webpack.initdb.config.js"
+    "initdb": "webpack --config ./tasks/webpack.initdb.config.js",
+    "test-server": "jest"
   },
   "proxy": "https://localhost:443",
   "eslintConfig": {
@@ -60,6 +61,7 @@
     "copy-webpack-plugin": "^5.1.1",
     "nodemon": "^2.0.2",
     "npm-run-all": "^4.1.5",
+    "supertest": "^4.0.2",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack-cli": "^3.3.11",
     "webpack-node-externals": "^1.7.2"

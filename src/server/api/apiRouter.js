@@ -59,7 +59,9 @@ function createApiRouter (context, config, database) {
 
   // error handling
   apiRouter.use(function (err, req, res, next) {
-    console.log('error handler', err)
+    if(process.env.NODE_ENV !== 'test') {
+      console.log('error handler', err)
+    }
     if (err.httpStatus) {
       res.status(err.httpStatus)
       res.result = {message: err.message, errors: err.errors}

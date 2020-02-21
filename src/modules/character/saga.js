@@ -45,12 +45,14 @@ function * CharacterSaga (action) {
     case Actions.USE_SCROLL:
       try {
         yield put(AppActions.startSubmit(XP_FORM_NAME))
-        const scrollResult = yield call(charSvc.useScroll, action.scroll)
+        const usedScroll = yield call(charSvc.useScroll, action.scroll.id)
 
+        yield put(Actions.applyScrollEffect(usedScroll))
         if (action.cb) {
-          yield call(action.cb, scrollResult)
+          yield call(action.cb, usedScroll)
         }
       } catch (error) {
+        console.log(error)
         errorAction = handleError(XP_FORM_NAME, error)
       } finally {
         yield put(AppActions.stopSubmit(XP_FORM_NAME))
