@@ -15,4 +15,18 @@ CharacterRepository.prototype.addXpAndGold = function (id, xpIncrement, goldIncr
     })
 }
 
+// returns true if there was enough gold
+CharacterRepository.prototype.spendGold = function (id, gold, modifiedOn) {
+  const filters = {_id: id, availableGold: { $gte: gold}}
+  const update = {
+    $inc: {availableGold: -gold},
+    $set: {modifiedOn}
+  }
+
+  return this.collection.findOneAndUpdate(filters, update, {returnOriginal:false})
+    .then(result => {
+      return result.lastErrorObject.updatedExisting
+    })
+}
+
 export default CharacterRepository

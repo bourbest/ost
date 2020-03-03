@@ -32,7 +32,7 @@ afterAll(() => {
 })
 
 beforeEach( () => {
-  db.collection('InvoiceClaim').deleteMany({})
+  return db.collection('InvoiceClaim').deleteMany({})
 })
 
 describe('GET /api/my-character/claims', () => {

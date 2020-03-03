@@ -1,3 +1,5 @@
+import {keyBy} from 'lodash'
+
 import { Actions } from './actions'
 const initialState = {
   apiConfig: {
@@ -5,7 +7,8 @@ const initialState = {
     }
   },
   forms: {},
-  loading: {}
+  loading: {},
+  perksById: {}
 }
 
 const appReducer = (state = initialState, action = {}) => {
@@ -27,6 +30,10 @@ const appReducer = (state = initialState, action = {}) => {
     case Actions.SET_LOADING:
       newState.loading = {...newState.loading}
       newState[action.entityName] = action.value
+      return newState
+
+    case Actions.SET_PERKS:
+      newState.perksById = keyBy(action.perks, 'id')
       return newState
 
     default:

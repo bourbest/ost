@@ -8,7 +8,9 @@ const actions = [
   'NOTIFY',
   'SET_SUBMIT',
   'REFRESH_STORE',
-  'SET_LOADING'
+  'SET_LOADING',
+
+  'SET_PERKS'
 ]
 
 export const Actions = createActions(prefix, actions)
@@ -20,5 +22,7 @@ export const ActionCreators = {
   startSubmit: (form) => ({type: Actions.SET_SUBMIT, form, value: true}),
   stopSubmit: (form, err) => ({type: Actions.SET_SUBMIT, form, value: false, err}),
   refreshStore: () => ({type: Actions.REFRESH_STORE}),
-  setLoading: (entityName, value) => ({type: Actions.SET_LOADING, entityName, value})
+  setLoading: (entityName, value) => ({type: Actions.SET_LOADING, entityName, value}),
+
+  setPerks: (perks) => ({type: Actions.SET_PERKS, perks})
 }

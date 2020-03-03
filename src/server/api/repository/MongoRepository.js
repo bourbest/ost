@@ -123,7 +123,7 @@ export function update (entity) {
 
 export function upsert (entity) {
   const data = this.prepareForDatabase(entity)
-  const filters = {_id: data.id}
+  const filters = {_id: data._id}
   return this.collection.replaceOne(filters, data, {upsert: true})
 }
 
