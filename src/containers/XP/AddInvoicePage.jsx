@@ -33,7 +33,7 @@ function AddInvoicePage (props) {
   const save = function () {
     if (isEmpty(form.fieldErrors)) {
       const data = form.values
-      props.characterActions.addInvoice(data, (result) => {
+      props.characterActions.createClaim(data, (result) => {
         // TODO: notify
         initialize(defaultFormValues)
         setResult(result)

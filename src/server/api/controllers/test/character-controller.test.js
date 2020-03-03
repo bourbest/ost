@@ -26,7 +26,7 @@ afterAll(() => {
 })
 
 beforeEach( () => {
-  db.collection('Character').deleteMany({})
+  return db.collection('Character').deleteMany({})
 })
 
 describe('GET /api/my-character', () => {

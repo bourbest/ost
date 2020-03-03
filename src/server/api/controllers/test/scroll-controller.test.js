@@ -27,7 +27,7 @@ afterAll(() => {
 })
 
 beforeEach( () => {
-  db.collection('Scroll').deleteMany({})
+  return db.collection('Scroll').deleteMany({})
 })
 
 describe('POST /api/scrolls/:id/use', () => {

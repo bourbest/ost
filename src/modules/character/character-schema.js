@@ -10,3 +10,8 @@ export const invoiceClaimSchema = new Schema({
 export const useScrollSchema = new Schema({
   id: string(required)
 })
+
+export const usePerkSchema = new Schema({
+  characterPerkId: string(required),
+  staffCode: string(required)
+})

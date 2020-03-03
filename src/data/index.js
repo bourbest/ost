@@ -4,6 +4,7 @@ import ApiClient from './base/api-client'
 import AuthService from './authentication-service'
 import AccountService from './account-service'
 import CharacterService from './character-service'
+import AppService from './app-service'
 
 export const createService = (serviceName, apiConfig) => {
   const apiClient = new ApiClient(apiConfig)
@@ -16,6 +17,9 @@ export const createService = (serviceName, apiConfig) => {
 
     case 'character':
       return new CharacterService(apiClient)
+
+    case 'app':
+      return new AppService(apiClient)
 
     default:
       throw new Error('Invalid service name', serviceName)

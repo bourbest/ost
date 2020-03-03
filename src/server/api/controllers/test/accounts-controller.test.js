@@ -23,8 +23,10 @@ afterAll(() => {
 })
 
 beforeEach( () => {
-  db.collection('UserAccount').deleteMany({})
-  db.collection('Character').deleteMany({})
+  return Promise.all([
+    db.collection('UserAccount').deleteMany({}),
+    db.collection('Character').deleteMany({})
+  ])
 })
 
 describe('POST /accounts', () => {

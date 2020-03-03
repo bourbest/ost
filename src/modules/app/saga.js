@@ -1,7 +1,7 @@
-import { put, takeEvery, all } from 'redux-saga/effects'
+import { put, takeEvery, all, call, select } from 'redux-saga/effects'
 import { ActionCreators as AppActions } from '../app/actions'
 import { ActionCreators as CharacterActions } from '../character/actions'
-
+import {getService} from './selectors'
 import {handleError} from '../common/commonHandlers'
 import { Actions } from './actions'
 
@@ -25,25 +25,20 @@ function * appSaga (action) {
 
     case Actions.REFRESH_STORE:
       try {
-        yield all([
+        const appSvc = yield select(getService, 'app')
+
+        const [perks] = yield all([
+          call(appSvc.getPerks),
           put(AppActions.setLoading('store', true)),
           put(CharacterActions.loadMyCharacter())
         ])
-        /* const ret = yield call(svc.getMyCharacter)
-  
-        yield all([
-          put(AppActions.setCsrfToken(ret.csrfToken)),
-          put(AuthActionCreators.setUser(ret.user))
-        ])
 
-        if (action.cb) {
-          yield call(action.cb)
-        }
-        yield put(AppActions.stopSubmit(FORM_NAME))
-        */
+        yield all([
+          put(AppActions.setPerks(perks.entities)),
+          put(AppActions.setLoading('store', false))
+        ])
       } catch (error) {
         errorAction = handleError('store', error)
-      } finally {
         yield put(AppActions.setLoading('store', false))
       }
       break
