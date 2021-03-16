@@ -157,6 +157,7 @@ export function deleteByFilters (filters) {
 
 export const createBaseRepository = (collectionName) => {
   function BaseRepository (db) {
+    this.db = db
     this.collection = db.collection(collectionName)
   }
 

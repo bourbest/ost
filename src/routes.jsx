@@ -12,6 +12,7 @@ import AddInvoicePage from './containers/XP/AddInvoicePage'
 import UseScrollPage from './containers/XP/UseScrollPage'
 import BuyPerkPage from './containers/Perks/BuyPerksPage'
 import MyPerksPage from './containers/Perks/MyPerksPage'
+import MyClaimsPage from './containers/XP/MyClaimsPage'
 
 export default function Routes() {
   return (
@@ -24,8 +25,9 @@ export default function Routes() {
         <Route exact path="/xp/use-scroll" component={UseScrollPage} />
         <Route exact path="/perks/buy" component={BuyPerkPage} />
         <Route exact path="/my-perks" component={MyPerksPage} />
+        <Route exact path="/my-claims" component={MyClaimsPage} />
         <Route>
-          Not found
+          Not found dho!
         </Route>
       </Switch>
     </Router>

@@ -35,6 +35,7 @@ function HomePage(props) {
           <Link to="/xp/use-scroll" className="btn btn-primary">Parchemin</Link>
           <Link to="/perks/buy" className="btn btn-primary">Avantages</Link>
           <Link to="/my-perks" className="btn btn-primary">Mes avantages</Link>
+          <Link to="/my-claims">Mes factures</Link>
         </div>
       </div>
     </div>

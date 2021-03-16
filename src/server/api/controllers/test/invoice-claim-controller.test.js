@@ -12,9 +12,9 @@ const USER_ID = '234'
 const AUTH_COOKIE = getAuthCookie(USER_ID)
 
 const A_WELL_FORMED_CLAIM = {
-  invoiceId: 6546,
+  invoiceId: '654446-1',
   invoiceDate: '2019-08-08T00:00:00.000Z',
-  invoiceTime: '5:19'
+  invoiceTime: '05:45'
 }
 
 beforeAll(() => {
@@ -85,12 +85,38 @@ describe('POST /api/invoice-claims', () => {
       .post('/api/invoice-claims')
       .set('Cookie', AUTH_COOKIE)
       .send(A_WELL_FORMED_CLAIM)
+
     expect(res.statusCode).toEqual(200)
     expect(res.body.id).toBeDefined()
     expect(res.body.modifiedOn).toBeDefined()
     expect(res.body.createdOn).toEqual(res.body.modifiedOn)
+    expect(res.body.invoiceEffectiveDate).toBeDefined()
     expect(res.body).toMatchObject(A_WELL_FORMED_CLAIM)
     expect(res.body.ownerId).toEqual(USER_ID)
     expect(res.body.status).toEqual('pending')
+  })
+
+  it('pads the time with a leading 0 when needed', async () => {
+    const claim = {...A_WELL_FORMED_CLAIM}
+    claim.invoiceTime = '5h45'
+    const res = await request(app)
+      .post('/api/invoice-claims')
+      .set('Cookie', AUTH_COOKIE)
+      .send(claim)
+
+    expect(res.statusCode).toEqual(200)
+    expect(res.body.invoiceTime).toEqual('05:45')
+  })
+
+  it('doesnt pad the time with a leading 0 when not needed', async () => {
+    const claim = {...A_WELL_FORMED_CLAIM}
+    claim.invoiceTime = '15h45'
+    const res = await request(app)
+      .post('/api/invoice-claims')
+      .set('Cookie', AUTH_COOKIE)
+      .send(claim)
+
+    expect(res.statusCode).toEqual(200)
+    expect(res.body.invoiceTime).toEqual('15:45')
   })
 })

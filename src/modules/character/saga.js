@@ -47,6 +47,17 @@ function * CharacterSaga (action) {
       }
       break
 
+    case Actions.REFRESH_CLAIMS:
+      try{
+        yield put(AppActions.startSubmit(XP_FORM_NAME))
+        const claims = yield call(charSvc.getMyClaims)
+        yield put(CharacterActions.setClaims(claims.entities))
+      } catch (error) {
+        errorAction = handleError(XP_FORM_NAME, error)
+      } finally {
+        yield put(AppActions.stopSubmit(XP_FORM_NAME))
+      }
+      break
     case Actions.BUY_PERK:
       const boughtPerk = yield call(charSvc.buyPerk, action.perkId)
       yield put(CharacterActions.addLocalPerk(boughtPerk))
@@ -102,6 +113,7 @@ function * CharacterSaga (action) {
 
 export default takeEvery([
   Actions.CREATE_REMOTE_CLAIM,
+  Actions.REFRESH_CLAIMS,
   Actions.USE_SCROLL,
   Actions.LOAD_CHARACTER,
   Actions.USE_PERK,

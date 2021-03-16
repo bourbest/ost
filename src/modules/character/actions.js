@@ -9,6 +9,7 @@ export const Actions = createActions(prefix, [
   'SET_CLAIMS',
   'CREATE_REMOTE_CLAIM', // saga
   'ADD_LOCAL_CLAIM',
+  'REFRESH_CLAIMS', // saga
 
   'BUY_PERK', // saga
   'SET_PERKS',
@@ -27,6 +28,7 @@ export const ActionCreators = {
   setClaims: (claims) => ({type: Actions.SET_CLAIMS, claims}),
   createClaim: (invoice, cb) => ({type: Actions.CREATE_REMOTE_CLAIM, invoice, cb}),
   addLocalClaim: (claim) => ({type: Actions.ADD_LOCAL_CLAIM, claim}),
+  refreshClaims: () => ({type: Actions.REFRESH_CLAIMS}),
 
   setPerks: (perks) => ({type: Actions.SET_PERKS, perks}),
   buyPerk: (perkId) => ({type: Actions.BUY_PERK, perkId}),

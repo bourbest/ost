@@ -54,9 +54,9 @@ function AddInvoicePage (props) {
       {!result &&
         <form>
           <FormError error={props.formError} />
-          <Field form={form} required name="invoiceId" label="No de facture" control={Input} type="number" bindings={bindings} />
-          <Field form={form} required name="invoiceDate" label="Date de la facture" control={Input} type="date" bindings={bindings} />
-          <Field form={form} required name="invoiceTime" label="Heure et minutes" placeholder="hh:mm" control={Input} type="time" bindings={bindings} />
+          <Field form={form} required name="invoiceId" label="No de facture" control={Input} bindings={bindings} />
+          <Field form={form} required name="invoiceDate" label="Date de la facture" placeholder="aaaa-mm-jj" control={Input} bindings={bindings} />
+          <Field form={form} required name="invoiceTime" label="Heure et minutes" placeholder="hh:mm" control={Input} bindings={bindings} />
 
           <div className="text-right mb-4">
             <Button type="button" color="secondary" onClick={() => history.goBack()}>Retour</Button>

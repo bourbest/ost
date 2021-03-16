@@ -1,4 +1,4 @@
-import {findIndex, forEach, countBy} from 'lodash'
+import {findIndex, forEach, countBy, orderBy} from 'lodash'
 import {createSelector} from 'reselect'
 import {LEVELS, getLevel} from '../../data/levels'
 import {getPerksById} from '../app/selectors'
@@ -11,6 +11,14 @@ export const getMyCharacter = state => state.character.characterInfo
 
 export const getMyXp = state => state.character.characterInfo.xp
 export const getMyAvailableGold = state => state.character.characterInfo.availableGold
+
+export const getMyClaims = state => state.character.invoiceClaims
+export const getMyClaimsByDate = createSelector(
+  [getMyClaims],
+  (claims) => {
+    return orderBy(claims, ['invoiceDate', 'desc'])
+  }
+)
 
 export const getMyLevel = createSelector(
   [getMyXp],
