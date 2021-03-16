@@ -13,12 +13,12 @@ beforeAll(() => {
 
 afterAll(() => {
   if (client) {
-    client.close()
+    return client.close()
   }
 })
 
 beforeEach( () => {
-  db.collection('Character').deleteMany({})
+  return db.collection('Character').deleteMany({})
 })
 
 describe('CharacterRepository', () => {

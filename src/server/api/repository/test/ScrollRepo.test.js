@@ -13,12 +13,12 @@ beforeAll(() => {
 
 afterAll(() => {
   if (client) {
-    client.close()
+    return client.close()
   }
 })
 
 beforeEach( () => {
-  db.collection('Scroll').deleteMany({})
+  return db.collection('Scroll').deleteMany({})
 })
 
 describe('ScrollRepository', () => {

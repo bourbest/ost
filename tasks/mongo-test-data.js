@@ -38,13 +38,18 @@ db.Scroll.insertMany([
 db.InvoiceClaim.deleteMany({})
 db.InvoiceClaim.insertMany([
   {_id: 'claim1', invoiceId: '123', invoiceDate: ISODate("2020-01-17T00:00:00.000Z"), invoiceTime: '11:43',
-       ownerId: 'testuser', status: 'pending', createdOn: ISODate("2020-02-22T00:25:08.184Z")},
+       ownerId: 'testuser', status: 'pending', createdOn: ISODate("2020-02-22T00:25:08.184Z"),
+       invoiceEffectiveDate: ISODate("2020-01-17T00:00:00.000Z")
+  },
 
   {_id: 'claim2', invoiceId: '124', invoiceDate: ISODate("2020-01-17T00:00:00.000Z"), invoiceTime: '11:43',
-       ownerId: 'testuser', status: 'denied', createdOn: ISODate("2020-02-22T00:25:08.184Z")},
+       ownerId: 'testuser', status: 'denied', createdOn: ISODate("2020-02-22T00:25:08.184Z"),
+       invoiceEffectiveDate: ISODate("2020-01-17T00:00:00.000Z")
+  },
 
   {_id: 'claim3', invoiceId: '125', invoiceDate: ISODate("2020-01-17T00:00:00.000Z"), invoiceTime: '11:44',
-       ownerId: 'testuser', status: 'approved', createdOn: ISODate("2020-02-22T00:25:08.184Z")} 
+       ownerId: 'testuser', status: 'approved', createdOn: ISODate("2020-02-22T00:25:08.184Z"),
+       invoiceEffectiveDate: ISODate("2020-01-17T00:00:00.000Z")} 
 ])
 
 // Quests

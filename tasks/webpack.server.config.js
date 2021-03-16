@@ -4,7 +4,7 @@ const webpack = require('webpack')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const outputPath = path.resolve(__dirname, '../build')
-const serverSourcePath = path.resolve(__dirname, '../src/server')
+const sourcePath = path.resolve(__dirname, '../src/')
 
 module.exports = env => {
   const isProd = env === 'production'
@@ -13,11 +13,13 @@ module.exports = env => {
     mode: env,
     target: "node",
     entry: {
-      app: path.resolve(serverSourcePath, './index.js')
+      backend: path.resolve(sourcePath, './server/index.js'),
+      'invoice-loader': path.resolve(sourcePath, './daemons/invoice-loader/index.js'),
+      'claims-processor': path.resolve(sourcePath, './daemons/claims-processor/index.js'),
     },
     output: {
       path: outputPath,
-      filename: "backend.js"
+      filename: "[name].js"
     },
     performance: {
       hints: 'warning'
@@ -29,7 +31,7 @@ module.exports = env => {
     plugins: [
       new webpack.DefinePlugin({ "process.env.NODE_ENV": JSON.stringify(env) }),
       new CopyWebpackPlugin([{
-        from: path.join(serverSourcePath, `./config/config.${env}.json`),
+        from: path.join(sourcePath, `./server/config/config.${env}.json`),
         to: path.join(outputPath, './server.config.json')
       }])
     ]
